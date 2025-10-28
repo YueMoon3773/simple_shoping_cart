@@ -1,0 +1,137 @@
+.homePage {
+    position: relative;
+}
+
+.homeContent {
+    @include flexColumn;
+}
+
+.topSection {
+    @include displayGrid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 2.6em, 30px);
+}
+
+.leftSide {
+    align-self: stretch;
+    justify-self: center;
+    @include flexColumn;
+    justify-content: space-around;
+    // gap: clamp(10px, 1.6em, 14px);
+    cursor: default;
+
+    & > * > span {
+        font-size: $fs_heading_lg;
+    }
+}
+
+.firstRow,
+.secondRow {
+    flex: 1;
+    @include flexCenter;
+}
+
+.firstRow {
+    gap: clamp(14px, 1.6em, 20px);
+
+    & > *:first-child {
+        animation: floating 660ms ease-in-out infinite;
+    }
+    & > *:nth-child(2) {
+        animation: floating 1660ms ease-in-out infinite;
+        animation-delay: 260ms;
+    }
+    & > *:last-child {
+        animation: floating 860ms ease-in-out infinite;
+        animation-delay: 660ms;
+    }
+}
+
+.secondRow {
+    gap: clamp(40px, 4.6em, 50px);
+    & > *:first-child {
+        animation: floating 1660ms ease-in-out infinite;
+    }
+    & > *:nth-child(2) {
+        animation: floating 660ms ease-in-out infinite;
+        animation-delay: 260ms;
+    }
+    & > *:last-child {
+        animation: floating 860ms ease-in-out infinite;
+        animation-delay: 660ms;
+    }
+}
+
+.rightSide {
+    place-self: center;
+    @include flexColumn;
+    align-items: center;
+    gap: clamp(30px, 3.6em, 40px);
+
+    & > h1 {
+        font-size: $fs_heading_xl;
+        color: $black_text;
+        cursor: default;
+        transition: all3260ms ease-in-out;
+
+        & > span {
+            font-size: $fs_heading_xl;
+            color: $light_red_color;
+        }
+        &:hover > span {
+            color: $red_color;
+        }
+    }
+
+    & > p {
+        font-size: $fs_normal_xl;
+        color: $black_text;
+        cursor: default;
+    }
+}
+
+.topSectionControllers {
+    @include flexCenter;
+
+    gap: clamp(20px, 2.6em, 30px);
+}
+
+.midSection {
+    @include flexColumn;
+    gap: clamp(20px, 2.6em, 30px);
+
+    margin: clamp(70px, 7.6em, 90px) 0;
+    cursor: default;
+
+    & > h2 {
+        font-size: $fs_heading_lg;
+        margin: 0 auto clamp(20px, 2.6em, 26px);
+        color: $black_text;
+    }
+}
+
+.midSectionContent {
+    @include displayGrid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(30px, 3.6em, 40px);
+}
+
+.botSection {
+    @include flexColumn;
+    gap: clamp(30px, 2.6em, 40px);
+    align-items: center;
+    width: 100%;
+    background-color: $light_gray_color;
+    padding: 4.8em;
+    border-radius: $distance_xl;
+    cursor: default;
+
+    & > h2 {
+        font-size: $fs_heading_lg;
+        color: $black_text;
+    }
+    & > p {
+        font-size: $fs_normal_lg;
+        color: $black_text;
+    }
+}

@@ -1,0 +1,11 @@
+.headerNav {
+    &.showShadow {
+        background-color: $snow_white_color;
+        box-shadow: 2px 0 16px rgba($color: $dark_gray_color, $alpha: 0.36);
+    }
+}
+
+.controller {
+    @include flexCenter;
+    gap: clamp(16px, 2em, 26px);
+}

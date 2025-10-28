@@ -1,0 +1,39 @@
+.homeCard {
+    @include flexColumn;
+    padding: 2em 3.4em;
+    gap: clamp(10px, 1.6em, 20px);
+    background-color: $gray_color;
+    transition: all 360ms ease-in-out;
+    cursor: default;
+
+    border-radius: $distance_xl;
+    box-shadow: 2px 3px 6px rgba($color: $black_text, $alpha: 0.6);
+
+    & > span {
+        font-size: $fs_heading_xl;
+        text-align: center;
+    }
+    & > h1 {
+        font-size: $fs_heading_md;
+        color: $dark_red_color;
+        font-weight: 600;
+        margin: 0 auto;
+        transition: all 360ms ease-in-out;
+
+        &:hover {
+            color: $light_red_color;
+        }
+    }
+    & > p {
+        font-size: $fs_normal_lg;
+        color: $black_text;
+        text-align: justify;
+        font-weight: 500;
+    }
+
+    &:hover {
+        background-color: $light_gray_color;
+        transform: translateY(-10px);
+        box-shadow: 6px 8px 16px rgba($color: $black_text, $alpha: 0.6);
+    }
+}

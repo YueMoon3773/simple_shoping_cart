@@ -1,0 +1,49 @@
+.headerBtn {
+    font-size: $fs_normal_lg;
+    color: $black_text;
+    padding: 0.16em 0.36em;
+    font-weight: 500;
+    position: relative;
+    transition: all 360ms ease-in-out;
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $light_red_color;
+        transition: all 360ms ease-in-out;
+        transform: rotateY(90deg);
+        transform-origin: center;
+    }
+
+    &:hover {
+        font-weight: 700;
+        color: $red_color;
+        transform: scale(1.06);
+        &::after {
+            transform: rotateY(0);
+        }
+    }
+}
+
+.toLinkMainBtn {
+    min-width: 186px;
+    font-size: $fs_normal_lg;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.6em 0.8em;
+
+    color: $snow_white_color;
+    background-color: $dark_red_color;
+    border-radius: 12px;
+    transition: all 320ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $light_red_color;
+    }
+}

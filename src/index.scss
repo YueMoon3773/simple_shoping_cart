@@ -69,3 +69,10 @@ h6 {
     overflow-wrap: break-word;
     text-wrap: balance;
 }
+
+body,
+#root {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}

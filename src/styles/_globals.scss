@@ -1,4 +1,4 @@
 // Import files for global usage.
-@use "./variables.scss" as *;
-@use "./mixins.scss" as *;
-@use "./functions.scss" as *;
+@forward "./variables.scss";
+@forward "./mixins.scss";
+@forward "./functions.scss";

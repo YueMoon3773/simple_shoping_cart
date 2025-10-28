@@ -1,0 +1,31 @@
+.page {
+    @include flexColumn;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.pageHeader {
+    @include flexCenter;
+    justify-content: space-between;
+    gap: clamp(50px, 5.6em, 60px);
+    padding: $distance_xl $distance_6xl;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.pageContent {
+    padding: $distance_4xl 0 $distance_6xl;
+}
+
+.leftPageContent {
+    padding-left: $distance_6xl;
+}
+
+.rightPageContent {
+    padding-right: $distance_6xl;
+}
