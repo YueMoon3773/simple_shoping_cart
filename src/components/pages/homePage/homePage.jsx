@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useHeaderNavShadow } from '../../../hooks/useHeaderNavShadow';
 
 import HeaderNav from '../../layout/headerNav/headerNav';
 import PageMarkerForNavShadow from '../../base/pageMarkerForNavShadow/pageMarkerForNavShadow';
@@ -10,23 +10,7 @@ import pageStyles from '../../../styles/modules/pageSetUp.module.scss';
 import './homePage.scss';
 
 const HomePage = () => {
-    const [headerShadow, setHeaderShadow] = useState(false);
-    const pageMarker = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entries]) => {
-                setHeaderShadow(!entries.isIntersecting);
-            },
-            { threshold: 0.2 },
-        );
-
-        if (pageMarker.current) {
-            observer.observe(pageMarker.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
+    const { headerShadow, pageMarker } = useHeaderNavShadow();
 
     return (
         <div className={`homePage ${pageStyles.page}`}>

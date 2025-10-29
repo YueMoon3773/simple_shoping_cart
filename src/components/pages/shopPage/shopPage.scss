@@ -1,0 +1,63 @@
+.shopPage {
+}
+
+.shopPageContent {
+}
+
+.shopHeadingWrapper {
+    @include flexColumn;
+    align-items: center;
+    gap: clamp(16px, 1.6em, 20px);
+    cursor: default;
+
+    & > h1 {
+        font-size: $fs_heading_xl;
+        color: $dark_red_color;
+    }
+    & > p {
+        font-size: $fs_normal_xl;
+        color: $black_text;
+    }
+}
+
+.shopControllers {
+    width: 100%;
+    @include flexCenter;
+    justify-content: space-between;
+
+    font-size: 1rem;
+    padding: 3.6em 2.4em;
+    margin: 3.6rem 0;
+    background-color: $light_gray_color;
+
+    border-radius: $distance_lg;
+    cursor: default;
+}
+
+.left {
+    @include flexCenter;
+    gap: clamp(10px, 1.6em, 20px);
+    & > span {
+        font-size: $fs_normal_lg;
+    }
+    & > select {
+        min-width: 160px;
+        padding: 0.2em 0.6em;
+        border-radius: $distance_sm;
+    }
+    & > select,
+    & > * > option {
+        font-size: $fs_normal_lg;
+        cursor: pointer;
+    }
+}
+
+.right {
+    font-size: $fs_normal_lg;
+
+    & > span {
+        font-size: $fs_normal_lg;
+        margin-right: 0.26em;
+        font-weight: 600;
+    }
+}
