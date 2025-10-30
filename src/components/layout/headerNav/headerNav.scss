@@ -7,5 +7,6 @@
 
 .controller {
     @include flexCenter;
+    flex-wrap: wrap;
     gap: clamp(16px, 2em, 26px);
 }

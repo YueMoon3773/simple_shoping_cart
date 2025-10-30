@@ -7,6 +7,7 @@
 
 .pageHeader {
     @include flexCenter;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: clamp(50px, 5.6em, 60px);
     padding: $distance_xl $distance_6xl;

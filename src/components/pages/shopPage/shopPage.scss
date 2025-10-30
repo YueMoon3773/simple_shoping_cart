@@ -2,6 +2,9 @@
 }
 
 .shopPageContent {
+    @include flexColumn;
+    align-items: stretch;
+    flex: 1;
 }
 
 .shopHeadingWrapper {
@@ -23,6 +26,7 @@
 .shopControllers {
     width: 100%;
     @include flexCenter;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     font-size: 1rem;
@@ -36,6 +40,7 @@
 
 .left {
     @include flexCenter;
+    flex-wrap: wrap;
     gap: clamp(10px, 1.6em, 20px);
     & > span {
         font-size: $fs_normal_lg;
@@ -59,5 +64,20 @@
         font-size: $fs_normal_lg;
         margin-right: 0.26em;
         font-weight: 600;
+    }
+}
+
+.shopDisplay {
+    flex: 1;
+
+    &:has(.loadingCompWrapper) {
+        @include flexColumn;
+    }
+
+    &:has(.card) {
+        @include displayGrid;
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+        // grid-template-rows: 500px;
+        gap: clamp(20px, 2.6em, 30px);
     }
 }

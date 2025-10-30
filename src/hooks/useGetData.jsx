@@ -9,7 +9,7 @@ export const useGetData = () => {
         fetch('https://fakestoreapi.com/products', { mode: 'cors' })
             .then((res) => {
                 if (res.status >= 400) {
-                    throw new Error('Server error!');
+                    throw new Error('Server error! Please check the URL.');
                 }
                 return res.json();
             })
@@ -18,5 +18,6 @@ export const useGetData = () => {
             .finally(() => setLoading(false));
     }, []);
 
+    console.log({ data, error, loading });
     return { data, error, loading };
 };

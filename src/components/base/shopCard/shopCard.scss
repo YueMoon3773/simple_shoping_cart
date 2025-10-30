@@ -1,0 +1,195 @@
+.card {
+    @include flexColumn;
+    position: relative;
+    background-color: $gray_color;
+    border-radius: $distance_xxl;
+
+    transition: all 360ms ease-in-out;
+    box-shadow: 2px 3px 6px rgba($color: $black_text, $alpha: 0.6);
+    cursor: default;
+    overflow: hidden;
+
+    &:hover {
+        background-color: $light_gray_color;
+        box-shadow: 6px 8px 16px rgba($color: $black_text, $alpha: 0.6);
+        z-index: 1;
+    }
+}
+
+.cardImgWrapper {
+    height: 300px;
+    overflow: hidden;
+    @include flexCenter;
+    flex-wrap: wrap;
+    background-color: $snow_white_color;
+
+    & > img {
+        // width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.cardContent {
+    @include flexColumn;
+    // gap: clamp(6px, 1em, 16px);
+    padding: 1em 1.6em;
+    flex: 1;
+
+    & > * {
+        flex: 1;
+    }
+    & > h3 {
+        font-size: calc($fs_normal_lg * 110 / 100);
+        color: $black_text;
+        line-height: 1.2;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 0.6em;
+    }
+}
+
+.contentBottom {
+    @include flexCenter;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    & > h2 {
+        font-size: $fs_heading_md;
+        color: $red_color;
+
+        & > span {
+            font-size: $fs_heading_md;
+            color: $red_color;
+            margin-left: $distance_sm;
+        }
+    }
+}
+
+.reviewsWrapper {
+    @include flexCenter;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: clamp(10px, 1.2em, 16px);
+}
+
+.rating {
+    @include flexCenter;
+    flex-wrap: wrap;
+    & > svg {
+        height: $fs_normal_xl;
+        color: $dark_yellow_color;
+    }
+    & > span {
+        font-size: $fs_normal_md;
+        color: $black_text;
+    }
+}
+
+.ratingCount {
+    font-size: $fs_normal_md;
+    color: $black_text;
+}
+
+.cardControllerWrapper {
+    @include flexCenter;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    background-color: $red_color;
+}
+
+.cardLeftController {
+    flex: 1.5;
+    @include flexCenter;
+    flex-wrap: wrap;
+
+    & > button {
+        font-size: $fs_normal_xl;
+        color: $white_text;
+        width: 30%;
+
+        background-color: transparent;
+        border: 2px solid transparent;
+        outline: none;
+        cursor: pointer;
+        transition: all 360ms ease-in-out;
+
+        &.add {
+            border-right: 2px solid rgba($color: $snow_white_color, $alpha: 0.36);
+        }
+        &.minus {
+            border-left: 2px solid rgba($color: $snow_white_color, $alpha: 0.36);
+        }
+        &:hover {
+            background-color: $light_red_color;
+            filter: brightness(1.6);
+            &.add {
+                border-right: 2px solid $snow_white_color;
+            }
+            &.minus {
+                border-left: 2px solid $snow_white_color;
+            }
+        }
+    }
+    & > input {
+        font-size: $fs_normal_lg;
+        color: $white_text;
+        padding: 0.26em 0.6em;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 40%;
+        transition: all 360ms ease-in-out;
+
+        &:focus {
+            background-color: $light_red_color;
+            filter: brightness(1.6);
+        }
+    }
+}
+
+.cardRightController {
+    flex: 1;
+    @include flexCenter;
+    align-items: stretch;
+    height: 100%;
+}
+
+.addToCart {
+    @include flexCenter;
+    flex-wrap: wrap;
+    gap: 0.2em;
+    width: 100%;
+
+    background-color: transparent;
+    outline: none;
+    border: 2px solid transparent;
+    border-left-color: rgba($color: $snow_white_color, $alpha: 0.36);
+    transition: all 360ms ease-in-out;
+    cursor: pointer;
+
+    font-size: $fs_normal_md;
+    font-weight: 600;
+    color: $white_text;
+
+    & > svg {
+        height: $fs_normal_lg;
+        color: $white_text;
+    }
+    &:hover {
+        border-left-color: $snow_white_color;
+        background-color: $light_red_color;
+        filter: brightness(1.6);
+    }
+}
+
+.cardCategory {
+    position: absolute;
+    top: 4%;
+    font-size: $fs_normal_md;
+    padding: 0.2em 0.46em;
+    color: $white_text;
+    background-color: $red_color;
+}

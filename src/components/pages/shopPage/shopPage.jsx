@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useHeaderNavShadow } from '../../../hooks/useHeaderNavShadow';
 import { useGetData } from '../../../hooks/useGetData';
 
+import LoadingComp from '../../base/loadingComp/loadingComp';
+import ErrorComp from '../../base/errorComp/errorComp';
+
 import HeaderNav from '../../layout/headerNav/headerNav';
 import PageMarkerForNavShadow from '../../base/pageMarkerForNavShadow/pageMarkerForNavShadow';
 import ShopCard from '../../base/shopCard/shopCard';
@@ -15,7 +18,7 @@ const ShopPage = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        console.log(data);
+        // console.log(data);
         const tmpCategories = [];
         if (data) {
             data.forEach((item, index) => {
@@ -26,13 +29,11 @@ const ShopPage = () => {
             setCategories([...tmpCategories]);
         }
 
-        console.log({ categories });
+        // console.log({ categories });
     }, [data]);
 
-    // console.log(categories.length);
-
     return (
-        <div className="shopPage">
+        <div className={`shopPage ${pageStyles.page}`}>
             <HeaderNav headerShadow={headerShadow} />
             <PageMarkerForNavShadow refName={pageMarker} />
             <div
@@ -64,7 +65,10 @@ const ShopPage = () => {
                 </section>
 
                 <section className="shopDisplay">
+                    {loading === true && error === null && <LoadingComp />}
+                    {error !== null && <ErrorComp />}
                     {error === null &&
+                        loading !== true &&
                         data !== null &&
                         data.map((dataItem, dataIndex) => {
                             return (

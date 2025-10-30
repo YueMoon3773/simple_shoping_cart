@@ -29,6 +29,7 @@
 .secondRow {
     flex: 1;
     @include flexCenter;
+    flex-wrap: wrap;
 }
 
 .firstRow {
@@ -92,7 +93,7 @@
 
 .topSectionControllers {
     @include flexCenter;
-
+    flex-wrap: wrap;
     gap: clamp(20px, 2.6em, 30px);
 }
 

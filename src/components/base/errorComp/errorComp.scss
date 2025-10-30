@@ -1,0 +1,9 @@
+.errorCompWrapper {
+    flex: 1;
+    @include flexCenter;
+    flex-wrap: wrap;
+    & > h5 {
+        color: $black_text;
+        font-size: $fs_normal_lg;
+    }
+}
