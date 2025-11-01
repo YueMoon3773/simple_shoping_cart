@@ -12,22 +12,26 @@
     &:hover {
         background-color: $light_gray_color;
         box-shadow: 6px 8px 16px rgba($color: $black_text, $alpha: 0.6);
-        z-index: 1;
+        transform: translateY(-6px);
+
+        & > .cardImgWrapper > img {
+            transform: scale(1.16);
+        }
     }
 }
 
 .cardImgWrapper {
-    height: 300px;
+    height: 260px;
     overflow: hidden;
     @include flexCenter;
     flex-wrap: wrap;
     background-color: $snow_white_color;
 
     & > img {
-        // width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
+        transition: all 360ms ease-in-out;
     }
 }
 
@@ -117,28 +121,30 @@
         transition: all 360ms ease-in-out;
 
         &.add {
-            border-right: 2px solid rgba($color: $snow_white_color, $alpha: 0.36);
+            border-left: 2px solid rgba($color: $snow_white_color, $alpha: 0.36);
         }
         &.minus {
-            border-left: 2px solid rgba($color: $snow_white_color, $alpha: 0.36);
+            border-right: 2px solid rgba($color: $snow_white_color, $alpha: 0.36);
         }
         &:hover {
             background-color: $light_red_color;
             filter: brightness(1.6);
             &.add {
+                border-left: 2px solid $snow_white_color;
                 border-right: 2px solid $snow_white_color;
             }
             &.minus {
-                border-left: 2px solid $snow_white_color;
+                border-right: 2px solid $snow_white_color;
             }
         }
     }
     & > input {
         font-size: $fs_normal_lg;
         color: $white_text;
+        text-align: center;
         padding: 0.26em 0.6em;
         background-color: transparent;
-        border: none;
+        border: 2px solid transparent;
         outline: none;
         width: 40%;
         transition: all 360ms ease-in-out;
@@ -146,6 +152,8 @@
         &:focus {
             background-color: $light_red_color;
             filter: brightness(1.6);
+            border-left: 2px solid $snow_white_color;
+            border-right: 2px solid $snow_white_color;
         }
     }
 }

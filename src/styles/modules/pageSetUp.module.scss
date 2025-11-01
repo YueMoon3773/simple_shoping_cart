@@ -10,7 +10,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: clamp(50px, 5.6em, 60px);
-    padding: $distance_xl $distance_6xl;
+    padding: $distance_xl $distance_7xl;
 
     position: sticky;
     top: 0;
@@ -20,13 +20,13 @@
 }
 
 .pageContent {
-    padding: $distance_4xl 0 $distance_6xl;
+    padding: $distance_4xl 0 $distance_7xl;
 }
 
 .leftPageContent {
-    padding-left: $distance_6xl;
+    padding-left: $distance_7xl;
 }
 
 .rightPageContent {
-    padding-right: $distance_6xl;
+    padding-right: $distance_7xl;
 }

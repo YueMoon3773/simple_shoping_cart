@@ -1,0 +1,10 @@
+.errorPage {
+    align-items: center;
+    justify-content: center;
+    h1 {
+        font-size: $fs_heading_xl;
+        color: $dark_red_color;
+        font-weight: 900;
+        text-align: center;
+    }
+}

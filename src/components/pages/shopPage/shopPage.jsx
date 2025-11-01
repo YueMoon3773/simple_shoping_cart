@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useHeaderNavShadow } from '../../../hooks/useHeaderNavShadow';
 import { useGetData } from '../../../hooks/useGetData';
+import { useStorageHelper } from '../../../hooks/useStorageHelper';
 
 import LoadingComp from '../../base/loadingComp/loadingComp';
 import ErrorComp from '../../base/errorComp/errorComp';
@@ -15,10 +16,15 @@ import './shopPage.scss';
 const ShopPage = () => {
     const { headerShadow, pageMarker } = useHeaderNavShadow();
     const { data, error, loading } = useGetData();
+    const { getTotalNumberOfItems } = useStorageHelper('localStorage');
+
+    const [navCartNumber, setNavCartNumber] = useState(getTotalNumberOfItems());
     const [categories, setCategories] = useState([]);
+    const [dataToShow, setDataToShow] = useState(null);
 
     useEffect(() => {
-        // console.log(data);
+        setDataToShow(data);
+
         const tmpCategories = [];
         if (data) {
             data.forEach((item, index) => {
@@ -32,9 +38,18 @@ const ShopPage = () => {
         // console.log({ categories });
     }, [data]);
 
+    const handleClickSortOption = (userSelectedOption) => {
+        let tmpData;
+        if (userSelectedOption === 'all') setDataToShow(data);
+        else {
+            tmpData = data.filter((item, idenx) => item.category === userSelectedOption);
+            setDataToShow(tmpData);
+        }
+    };
+
     return (
         <div className={`shopPage ${pageStyles.page}`}>
-            <HeaderNav headerShadow={headerShadow} />
+            <HeaderNav headerShadow={headerShadow} navCartNumber={navCartNumber} />
             <PageMarkerForNavShadow refName={pageMarker} />
             <div
                 className={`shopPageContent ${pageStyles.pageContent} ${pageStyles.leftPageContent} ${pageStyles.rightPageContent}`}
@@ -47,8 +62,10 @@ const ShopPage = () => {
                 <section className="shopControllers">
                     <div className="left">
                         <span>Sort by:</span>
-                        <select name="" id="">
-                            <option value="all">All</option>
+                        <select onChange={(e) => handleClickSortOption(e.target.value)}>
+                            <option value="all" defaultChecked>
+                                All
+                            </option>
                             {categories.length !== 0 &&
                                 categories.map((category, index) => {
                                     return (
@@ -60,7 +77,7 @@ const ShopPage = () => {
                         </select>
                     </div>
                     <div className="right">
-                        <span>{data === null ? 0 : data.length}</span>products found
+                        <span>{dataToShow === null ? 0 : dataToShow.length}</span>products found
                     </div>
                 </section>
 
@@ -69,11 +86,12 @@ const ShopPage = () => {
                     {error !== null && <ErrorComp />}
                     {error === null &&
                         loading !== true &&
-                        data !== null &&
-                        data.map((dataItem, dataIndex) => {
+                        dataToShow !== null &&
+                        dataToShow.map((dataItem, dataIndex) => {
                             return (
                                 <ShopCard
                                     key={dataItem.id}
+                                    cardId={dataItem.id}
                                     cardImgSrc={dataItem.image}
                                     cardTitle={dataItem.title}
                                     cardDetails={dataItem.description}
@@ -81,6 +99,7 @@ const ShopPage = () => {
                                     cardRating={dataItem.rating.rate}
                                     cardRatingCount={dataItem.rating.count}
                                     cardCategory={dataItem.category}
+                                    setNavCartNumber={setNavCartNumber}
                                 />
                             );
                         })}

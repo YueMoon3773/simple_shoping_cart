@@ -1,3 +1,16 @@
 .headerBtnActivated {
     color: $dark_red_color;
 }
+
+.totalNumber {
+    font-size: $fs_normal_sm;
+    color: $white_text;
+    font-weight: 600;
+    padding: 0.06em 0.3em;
+    background-color: $red_color;
+    border-radius: 99px;
+
+    position: absolute;
+    top: -26%;
+    right: -26%;
+}

@@ -11,9 +11,10 @@ import './headerNav.scss';
 
 const headerNavSchema = z.object({
     headerShadow: z.boolean().default(false),
+    navCartNumber: z.number().optional(),
 });
 
-const HeaderNav = ({ headerShadow = false }) => {
+const HeaderNav = ({ headerShadow = false, navCartNumber }) => {
     const linkList = [
         { to: '/', content: 'Home' },
         { to: '/shop', content: 'Shop' },
@@ -25,7 +26,14 @@ const HeaderNav = ({ headerShadow = false }) => {
             <HeaderLogo />
             <div className="controller">
                 {linkList.map((link) => {
-                    return <HeaderBtn key={link.content} toLink={link.to} btnContent={link.content} />;
+                    return (
+                        <HeaderBtn
+                            key={link.content}
+                            toLink={link.to}
+                            btnContent={link.content}
+                            navCartNumber={navCartNumber}
+                        />
+                    );
                 })}
             </div>
         </div>
