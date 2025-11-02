@@ -18,6 +18,6 @@ export const useGetData = () => {
             .finally(() => setLoading(false));
     }, []);
 
-    console.log({ data, error, loading });
+    // console.log({ data, error, loading });
     return { data, error, loading };
 };

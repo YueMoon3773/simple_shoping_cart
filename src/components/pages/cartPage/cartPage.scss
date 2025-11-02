@@ -1,0 +1,157 @@
+.cartPage {
+}
+
+.cartPageContent {
+    flex: 1;
+    @include flexColumn;
+    gap: clamp(30px, 3.6em, 40px);
+}
+
+.cartContentHeading {
+    @include flexColumn;
+    align-items: center;
+    cursor: default;
+
+    & > h2 {
+        font-size: $fs_heading_xl;
+        color: $red_color;
+    }
+
+    & > p {
+        font-size: $fs_normal_lg;
+        color: $black_text;
+
+        & > span {
+            font-size: $fs_normal_lg;
+            font-weight: 600;
+        }
+    }
+}
+
+.noItemSection {
+    @include flexColumn;
+    align-items: center;
+    gap: clamp(16px, 1.6em, 20px);
+    padding: 5.6em;
+    background-color: $gray_color;
+
+    cursor: default;
+    border-radius: $distance_xl;
+    box-shadow: 2px 3px 6px rgba($color: $black_text, $alpha: 0.6);
+    transition: all 360ms ease-in-out;
+
+    & > h1 {
+        font-size: $fs_heading_xl;
+        // filter: brightness(1.2);
+    }
+    & > h2 {
+        font-size: $fs_heading_md;
+        color: $light_red_color;
+    }
+    & > p {
+        font-size: $fs_normal_lg;
+        font-weight: 460;
+        color: $black_text;
+        margin-bottom: 2em;
+    }
+
+    &:hover {
+        background-color: $light_gray_color;
+        box-shadow: 6px 8px 16px rgba($color: $black_text, $alpha: 0.6);
+    }
+}
+
+.cartDisplayWrapper {
+    @include displayGrid;
+    grid-template-columns: 6fr 4fr;
+    gap: clamp(30px, 3.6em, 40px);
+
+    & > * {
+        align-self: self-start;
+    }
+}
+
+.cartProductsDisplay {
+    @include flexColumn;
+    gap: clamp(20px, 2.6em, 30px);
+}
+
+.cartSummary {
+    @include flexColumn;
+    align-items: stretch;
+    gap: clamp(16px, 1.6em, 20px);
+    padding: 2.6em;
+    background-color: $gray_color;
+
+    cursor: default;
+    border-radius: $distance_xl;
+    box-shadow: 2px 3px 6px rgba($color: $black_text, $alpha: 0.6);
+    transition: all 360ms ease-in-out;
+
+    &:hover {
+        background-color: $light_gray_color;
+        box-shadow: 6px 8px 16px rgba($color: $black_text, $alpha: 0.6);
+    }
+
+    & > h1 {
+        font-size: $fs_heading_lg;
+        color: $black_text;
+        margin: 0 auto;
+    }
+}
+
+.cartSummaryList {
+    & > .cartSummaryItem {
+        @include flexColumn;
+        align-items: stretch;
+        gap: clamp(6px, 0.6em, 8px);
+        color: $black_text;
+        padding-bottom: 0.6em;
+        border-bottom: 1px solid rgba($color: $black_text, $alpha: 0.66);
+
+        & > h4 {
+            font-size: $fs_normal_xl;
+        }
+    }
+
+    & > *:last-child {
+        border-bottom: none;
+    }
+}
+
+.summaryPriceWrapper {
+    @include flexCenter;
+    justify-content: space-between;
+
+    & > p,
+    & > * > span {
+        font-size: $fs_normal_md;
+    }
+
+    & > h5 {
+        font-size: $fs_normal_md;
+        font-weight: 500;
+    }
+}
+
+.cartSummaryTotal {
+    @include flexCenter;
+    justify-content: space-between;
+    padding: 0.6em;
+    border-top: 2px solid $red_color;
+
+    & > h3 {
+        font-size: $fs_heading_md;
+        color: $dark_red_color;
+        transition: all 360ms ease-in-out;
+
+        &:hover {
+            color: $light_red_color;
+        }
+    }
+}
+
+.cartSummaryControllers {
+    @include flexColumn;
+    gap: clamp(16px, 1.6em, 20px);
+}

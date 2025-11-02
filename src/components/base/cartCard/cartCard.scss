@@ -1,0 +1,80 @@
+.cartCard {
+    @include flexCenter;
+    justify-content: stretch;
+    gap: clamp(16px, 1.8em, 20px);
+    padding: 1.2em;
+
+    background-color: $gray_color;
+    cursor: default;
+    border-radius: $distance_xl;
+    box-shadow: 2px 3px 6px rgba($color: $black_text, $alpha: 0.6);
+    transition: all 360ms ease-in-out;
+
+    &:hover {
+        background-color: $light_gray_color;
+        box-shadow: 6px 8px 16px rgba($color: $black_text, $alpha: 0.6);
+    }
+}
+
+.cartCardImgWrapper {
+    max-height: 120px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: $white_color;
+    border-radius: $distance_lg;
+    border: 1px solid $black_color;
+
+    & > img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.cartCardContent {
+    flex: 1;
+    color: $black_text;
+    @include flexColumn;
+    align-items: start;
+
+    & > h3 {
+        font-size: $fs_normal_xl;
+    }
+    & > p {
+        font-size: $fs_normal_md;
+    }
+}
+
+.cartController {
+    width: 100%;
+    @include flexCenter;
+    justify-content: space-between;
+
+    & > h4 {
+        font-size: $fs_normal_xl;
+        color: $red_color;
+    }
+}
+
+.quantityWrapper {
+    @include flexCenter;
+    overflow: hidden;
+    border-radius: $distance_lg;
+    border: 1px solid rgba($color: $black_text, $alpha: 0.66);
+
+    & > input {
+        font-size: $fs_normal_lg;
+        font-weight: 600;
+        text-align: center;
+        padding: 0.6em;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        max-width: 100px;
+    }
+    & > .cartBtn {
+        aspect-ratio: 1/1 !important;
+        min-width: 50px;
+    }
+}

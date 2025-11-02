@@ -39,7 +39,23 @@
 
     color: $snow_white_color;
     background-color: $dark_red_color;
-    border-radius: 12px;
+    border-radius: $distance_lg;
+    transition: all 320ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $light_red_color;
+    }
+}
+
+.primaryColorBtn {
+    color: $white_text;
+    padding: 0.6em;
+
+    outline: none;
+    background-color: $dark_red_color;
+    border-color: transparent;
+    border-radius: $distance_lg;
     transition: all 320ms ease-in-out;
     cursor: pointer;
 
