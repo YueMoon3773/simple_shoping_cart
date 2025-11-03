@@ -17,7 +17,8 @@ import './cartPage.scss';
 const CartPage = () => {
     const { headerShadow, pageMarker } = useHeaderNavShadow();
     const { data, error, loading } = useGetData();
-    const { getAllStoredItems, getTotalNumberOfItems } = useStorageHelper('localStorage');
+    const { getItemDataByKey, getAllStoredItems, getTotalNumberOfItems, updateItemDataByKey, deleteItemByKey } =
+        useStorageHelper('localStorage');
 
     const [navCartNumber, setNavCartNumber] = useState(getTotalNumberOfItems());
     const [storedData, setStoredData] = useState(getAllStoredItems());
@@ -41,9 +42,32 @@ const CartPage = () => {
         }
     }, [data, storedData]);
 
-    console.log({ data, error, loading });
-    console.log({ storedData });
-    console.log({ dataToShow });
+    useEffect(() => {
+        setNavCartNumber(getTotalNumberOfItems());
+    }, [storedData]);
+
+    const handleMinusCartBtnClick = (productId) => {
+        const newItemData = getItemDataByKey(productId) - 1 < 1 ? 1 : getItemDataByKey(productId) - 1;
+        updateItemDataByKey(productId, newItemData);
+        setStoredData(getAllStoredItems());
+    };
+    const handleAddCartBtnClick = (productId) => {
+        const newItemData = getItemDataByKey(productId) + 1;
+        updateItemDataByKey(productId, newItemData);
+        setStoredData(getAllStoredItems());
+    };
+    const handleDeleteCartBtnClick = (productId) => {
+        deleteItemByKey(productId);
+        setStoredData(getAllStoredItems());
+    };
+    const handleInpOnChangeCard = (productId, newItemData) => {
+        updateItemDataByKey(productId, newItemData);
+        setStoredData(getAllStoredItems());
+    };
+
+    // console.log({ data, error, loading });
+    // console.log({ storedData });
+    // console.log({ dataToShow });
 
     return (
         <div className={`cartPage ${pageStyles.page}`}>
@@ -79,11 +103,18 @@ const CartPage = () => {
                             {dataToShow.map((item) => {
                                 return (
                                     <CartCard
+                                        key={item.id}
                                         cartCardImg={item.image}
                                         cartCardTitle={item.title}
                                         cartCardCategory={item.category}
                                         cartCardPrice={item.price}
                                         cartCardQuantity={item.quantity}
+                                        cartMinusBtnHandler={() => handleMinusCartBtnClick(item.id)}
+                                        cartAddBtnHandler={() => handleAddCartBtnClick(item.id)}
+                                        cartDeleteBtnHandler={() => handleDeleteCartBtnClick(item.id)}
+                                        cartInputOnChangeHandler={(inpValue) =>
+                                            handleInpOnChangeCard(item.id, inpValue)
+                                        }
                                     />
                                 );
                             })}
@@ -94,7 +125,7 @@ const CartPage = () => {
                             <ul className="cartSummaryList">
                                 {dataToShow.map((item) => {
                                     return (
-                                        <li className="cartSummaryItem">
+                                        <li className="cartSummaryItem" key={item.id}>
                                             <h4>{item.title}</h4>
                                             <div className="summaryPriceWrapper">
                                                 <p>
@@ -102,19 +133,37 @@ const CartPage = () => {
                                                         ${item.price} x {item.quantity}
                                                     </span>
                                                 </p>
-                                                <h5>${Number(item.price) * Number(item.quantity)}</h5>
+                                                <h5>
+                                                    $
+                                                    {Number.isInteger(Number(item.price) * Number(item.quantity))
+                                                        ? Number(item.price) * Number(item.quantity)
+                                                        : parseFloat(
+                                                              Number(item.price) * Number(item.quantity),
+                                                          ).toFixed(2)}
+                                                </h5>
                                             </div>
                                         </li>
                                     );
                                 })}
                             </ul>
+
                             <div className="cartSummaryTotal">
                                 <h3>Total</h3>
                                 <h3>
                                     $
-                                    {dataToShow.reduce((accu, item) => {
-                                        return accu + Number(item.price) * Number(item.quantity);
-                                    }, 0)}
+                                    {Number.isInteger(
+                                        dataToShow.reduce((accu, item) => {
+                                            return accu + Number(item.price) * Number(item.quantity);
+                                        }, 0),
+                                    )
+                                        ? dataToShow.reduce((accu, item) => {
+                                              return accu + Number(item.price) * Number(item.quantity);
+                                          }, 0)
+                                        : parseFloat(
+                                              dataToShow.reduce((accu, item) => {
+                                                  return accu + Number(item.price) * Number(item.quantity);
+                                              }, 0),
+                                          ).toFixed(2)}
                                 </h3>
                             </div>
                             <div className="cartSummaryControllers">

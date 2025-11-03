@@ -16,6 +16,7 @@ const shopCardSchema = z.object({
     cardRatingCount: z.number(),
     cardCategory: z.string(),
     setNavCartNumber: z.function(),
+    showItemAddedOnClick: z.function(),
 });
 
 const ShopCard = ({
@@ -28,6 +29,7 @@ const ShopCard = ({
     cardRatingCount,
     cardCategory,
     setNavCartNumber,
+    showItemAddedOnClick,
 }) => {
     const [quantity, setQuantity] = useState(1);
     const { saveDataToStorage, getTotalNumberOfItems } = useStorageHelper('localStorage');
@@ -109,6 +111,7 @@ const ShopCard = ({
                         className="addToCart"
                         onClick={() => {
                             handleClickAddToCartBtn(cardId);
+                            showItemAddedOnClick(cardTitle);
                         }}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

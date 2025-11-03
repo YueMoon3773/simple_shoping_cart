@@ -12,9 +12,23 @@ const cartCardSchema = z.object({
     cartCardCategory: z.string(),
     cartCardPrice: z.number(),
     cartCardQuantity: z.number(),
+    cartMinusBtnHandler: z.function(),
+    cartAddBtnHandler: z.function(),
+    cartDeleteBtnHandler: z.function(),
+    cartInputOnChangeHandler: z.function(),
 });
 
-const CartCard = ({ cartCardImg, cartCardTitle, cartCardCategory, cartCardPrice, cartCardQuantity }) => {
+const CartCard = ({
+    cartCardImg,
+    cartCardTitle,
+    cartCardCategory,
+    cartCardPrice,
+    cartCardQuantity,
+    cartMinusBtnHandler,
+    cartAddBtnHandler,
+    cartDeleteBtnHandler,
+    cartInputOnChangeHandler,
+}) => {
     return (
         <div className="cartCard">
             <div className="cartCardImgWrapper">
@@ -23,15 +37,27 @@ const CartCard = ({ cartCardImg, cartCardTitle, cartCardCategory, cartCardPrice,
             <div className="cartCardContent">
                 <h3>{cartCardTitle}</h3>
                 <p>{cartCardCategory}</p>
-                <p>{cartCardPrice}</p>
+                <p>${cartCardPrice}</p>
                 <div className="cartController">
-                    <h4>${cartCardPrice * cartCardQuantity}</h4>
+                    <h4>
+                        Total: $
+                        {Number.isInteger(cartCardPrice * cartCardQuantity)
+                            ? cartCardPrice * cartCardQuantity
+                            : parseFloat(cartCardPrice * cartCardQuantity).toFixed(2)}
+                    </h4>
                     <div className="quantityWrapper">
-                        <CartBtn cartBtnContent={'-'} />
-                        <input value={cartCardQuantity} type="number" />
-                        <CartBtn cartBtnContent={'+'} />
+                        <CartBtn cartBtnContent={'-'} onClick={cartMinusBtnHandler} />
+                        <input
+                            value={cartCardQuantity}
+                            onChange={(e) => {
+                                if (e.target.value < 0) cartInputOnChangeHandler(1);
+                                else cartInputOnChangeHandler(e.target.value);
+                            }}
+                            type="number"
+                        />
+                        <CartBtn cartBtnContent={'+'} onClick={cartAddBtnHandler} />
                     </div>
-                    <CartBtn cartBtnContent={'🗑️'} />
+                    <CartBtn cartBtnContent={'🗑️'} onClick={cartDeleteBtnHandler} />
                 </div>
             </div>
         </div>

@@ -196,7 +196,9 @@
 .cardCategory {
     position: absolute;
     top: 4%;
-    font-size: $fs_normal_md;
+    font-size: $fs_normal_ssm;
+    font-weight: 500;
+    text-transform: uppercase;
     padding: 0.2em 0.46em;
     color: $white_text;
     background-color: $red_color;

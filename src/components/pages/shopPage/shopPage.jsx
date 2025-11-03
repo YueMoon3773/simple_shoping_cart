@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useHeaderNavShadow } from '../../../hooks/useHeaderNavShadow';
 import { useGetData } from '../../../hooks/useGetData';
 import { useStorageHelper } from '../../../hooks/useStorageHelper';
@@ -17,10 +17,12 @@ const ShopPage = () => {
     const { headerShadow, pageMarker } = useHeaderNavShadow();
     const { data, error, loading } = useGetData();
     const { getTotalNumberOfItems } = useStorageHelper('localStorage');
+    const popupHelper = useRef(null);
 
     const [navCartNumber, setNavCartNumber] = useState(getTotalNumberOfItems());
     const [categories, setCategories] = useState([]);
     const [dataToShow, setDataToShow] = useState(null);
+    const [newlyAddedItem, setNewlyAddedItem] = useState('');
 
     useEffect(() => {
         setDataToShow(data);
@@ -45,6 +47,19 @@ const ShopPage = () => {
             tmpData = data.filter((item, idenx) => item.category === userSelectedOption);
             setDataToShow(tmpData);
         }
+    };
+
+    const handleShowAddedItemOnClick = (itemTitle) => {
+        const popupEle = popupHelper.current;
+        if (!popupEle) return;
+
+        setNewlyAddedItem(itemTitle);
+
+        popupEle.classList.add('show');
+
+        setTimeout(() => {
+            popupEle.classList.remove('show');
+        }, 2600);
     };
 
     return (
@@ -100,10 +115,16 @@ const ShopPage = () => {
                                     cardRatingCount={dataItem.rating.count}
                                     cardCategory={dataItem.category}
                                     setNavCartNumber={setNavCartNumber}
+                                    showItemAddedOnClick={handleShowAddedItemOnClick}
                                 />
                             );
                         })}
                 </section>
+            </div>
+            <div className="popperHelper" ref={popupHelper}>
+                <p>
+                    Added <span>{newlyAddedItem}</span> to cart.
+                </p>
             </div>
         </div>
     );

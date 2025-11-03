@@ -21,10 +21,6 @@ const routes = [
         element: <CartPage />,
         errorElement: <ErrorPage />,
     },
-    {
-        // path: '/profile/:name?',
-        // element: <Profile />,
-    },
 ];
 
 export default routes;

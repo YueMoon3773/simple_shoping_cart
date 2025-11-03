@@ -78,3 +78,30 @@
         gap: clamp(30px, 3.6em, 40px);
     }
 }
+
+.popperHelper {
+    position: fixed;
+    z-index: 100;
+    background-color: $green_color;
+    padding: 3.6em;
+    border-radius: $distance_lg;
+    top: 100px;
+    right: -1000px;
+
+    transition: all 360ms ease-in-out;
+
+    & > p {
+        font-size: $fs_normal_lg;
+        font-weight: 500;
+        color: $white_text;
+
+        & > span {
+            font-size: $fs_normal_lg;
+            font-weight: 700;
+        }
+    }
+
+    &.show {
+        right: $distance_7xl;
+    }
+}

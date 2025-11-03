@@ -17,6 +17,7 @@
 }
 
 .cartCardImgWrapper {
+    @include flexCenter;
     max-height: 120px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
@@ -40,9 +41,16 @@
 
     & > h3 {
         font-size: $fs_normal_xl;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     & > p {
         font-size: $fs_normal_md;
+    }
+    & > p:first-of-type {
+        text-transform: capitalize;
     }
 }
 
@@ -67,7 +75,7 @@
         font-size: $fs_normal_lg;
         font-weight: 600;
         text-align: center;
-        padding: 0.6em;
+        padding: 0.6em 0.2em;
         background-color: transparent;
         outline: none;
         border: none;

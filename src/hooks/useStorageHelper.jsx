@@ -45,7 +45,7 @@ export const useStorageHelper = (storageType) => {
                     data = Number(storage.getItem(key)) + itemData;
                     storage.setItem(key, data);
                 }
-                console.log(storage);
+                // console.log(storage);
             } else {
                 throw new Error(`Cannot save data to ${storage}`);
             }
@@ -60,7 +60,7 @@ export const useStorageHelper = (storageType) => {
             if (verifyItemExisted(itemKey) === false) return;
             else {
                 storage.removeItem(key);
-                console.log(storage);
+                // console.log(storage);
             }
         },
         [storage],
@@ -103,6 +103,17 @@ export const useStorageHelper = (storageType) => {
         return total;
     };
 
+    const updateItemDataByKey = useCallback(
+        (itemKey, newItemData) => {
+            if (verifyItemExisted(itemKey) === false) return;
+            else {
+                deleteItemByKey(itemKey);
+                saveDataToStorage(itemKey, newItemData);
+            }
+        },
+        [storage],
+    );
+
     return {
         checkStorageIsAvailable,
         clearStorage,
@@ -112,5 +123,6 @@ export const useStorageHelper = (storageType) => {
         getItemDataByKey,
         getAllStoredItems,
         getTotalNumberOfItems,
+        updateItemDataByKey,
     };
 };
