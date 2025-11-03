@@ -1,16 +1,50 @@
-# React + Vite
+# 📄 Shopify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive and responsive shopping cart web app built with modern web technologies — allowing users to browse, add, and manage products fetched from an external API in real-time.
 
-Currently, two official plugins are available:
+## 🚀 Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to **Shopify** — a minimalist e-commerce demo that demonstrates dynamic cart management, API integration, and an intuitive user interface.
+Users can explore a product list, add or remove items from their cart, and review total costs — all within a seamless and engaging experience.
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   🔄 **Real-time product fetching** – Retrieves data directly from an API.
+-   🛍️ **Add or remove items** – Adjust item quantities instantly in the cart.
+-   ❌ **Delete individual products** – Remove unwanted items from the shopping cart.
+-   🧮 **Auto price updates** – Cart total recalculates dynamically with each action.
+-   🎨 **Modern UI design** – Clean and user-friendly interface inspired by professional e-commerce layouts.
+-   📱 **Responsive Design** – Works seamlessly on desktop, tablet, and mobile devices.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack / Skills
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-   **_React/HTML_**: Structuring the layout and elements, dynamic DOM updates, component-based architecture and dynamic DOM rendering.
+-   **_CSS/SCSS_**: Styling to create an attractive and user interface, develop layouts and modal styling.
+-   **_JavaScript_**: For integration, application logic, event handling, and dynamic DOM updates, component-based architecture and dynamic DOM rendering.
+
+## 🎯 Project Purposes
+
+-   To practice, showcase and strengthen understanding of **React + state management skills**.
+-   Practice **API consumption** and dynamic rendering.
+-   Apply **modular SCSS** for component-based styling.
+-   Simulate a real-world **shopping cart flow** for users.
+-   Demonstrate frontend **interaction design and UX logic**.
+
+## 🌍 Live Demo
+
+Try out the Shopify right away: [Live demo link]()
+
+## ⚓ Acknowledgements
+
+-   Icons and SVG images are created by [pictogrammers](https://pictogrammers.com/), [svgrepo](https://www.svgrepo.com/), [freesvgicons](https://freesvgicons.com/)
+
+## 📬 Contact
+
+Contact me via:
+
+💌 Email: [nguyenhuagiabao.98@gmail.com](nguyenhuagiabao.98@gmail.com)
+
+## 🎉 Enjoy exploring and shopping with Shopify!
+
+Enjoy exploring and shopping with **Shopify**! 🚀  
+Built with passion and creativity — one item at a time. 🛍️
