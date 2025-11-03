@@ -32,7 +32,7 @@ Users can explore a product list, add or remove items from their cart, and revie
 
 ## 🌍 Live Demo
 
-Try out the Shopify right away: [Live demo link]()
+Try out the Shopify right away: [Live demo link](https://shopify-tau-rosy.vercel.app/shop)
 
 ## ⚓ Acknowledgements
 
